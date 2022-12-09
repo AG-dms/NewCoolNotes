@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["ES2017"],
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "noUnusedLocals": true /* Report errors on unused locals. */,
+    "noUnusedParameters": true /* Report errors on unused parameters. */,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+
+    "baseUrl": "./src",
+    "paths": {},
+
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "resolveJsonModule": true
+  },
+  "include": ["**/*.ts", "**/*.tsx", "src/**/*.d.ts", "babel.config.js"],
+  "exclude": ["node_modules", "metro.config.js", "jest.config.js"]
+}
