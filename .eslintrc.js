@@ -29,12 +29,13 @@ module.exports = {
 
   rules: {
     'no-console': 'warn',
+    // 'no-empty-patter': 'warn',
     'prettier/prettier': 'warn',
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    '@typescript-eslint/no-unused-vars': ['warn'],
+    '@typescript-eslint/no-unused-vars': ['off'],
     '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/comma-dangle': 'off',
     'react/display-name': 'off',

@@ -1,0 +1,7 @@
+<resources>
+  <color name="primary">#f15a29</color>
+  <color name="secondary">#FFAB27</color>
+  <color name="surface">#ffffff</color>
+  <color name="onSurface">#333333</color>
+  <color name="bootsplash_background">#FFFFFF</color>
+</resources>

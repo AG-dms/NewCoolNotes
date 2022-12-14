@@ -14,7 +14,21 @@
     "moduleResolution": "node",
 
     "baseUrl": "./src",
-    "paths": {},
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@api/*": ["api/*"],
+      "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
+      "@types/*": ["types/*"],
+      // "@i18n/*": ["i18n/*"],
+      "@navigation/*": ["navigation/*"],
+      "@screens/*": ["screens/*"],
+      "@store": ["store"],
+      "@store/*": ["store/*"],
+      "@utils/*": ["utils/*"],
+      "@themes/*": ["themes/*"],
+      "@/*": ["/*"]
+    },
 
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
