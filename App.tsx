@@ -1,26 +1,26 @@
 import { RootNavigator } from '@navigation/RootNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { store } from '@store';
-import React, { useEffect } from 'react';
+import { themes } from '@themes/themes';
+import React from 'react';
+import { Appearance, StatusBar } from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 const App = () => {
-  useEffect(() => {
-    const init = async () => {
-      // …do multiple sync or async tasks
-    };
-
-    init().finally(async () => {
-      await RNBootSplash.hide({ fade: true, duration: 500 });
-      console.log('Bootsplash has been hidden successfully');
-    });
-  }, []);
+  const colorScheme = Appearance.getColorScheme();
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <NavigationContainer>
-          <RootNavigator />
+        <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })}>
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <StatusBar
+              barStyle={colorScheme === 'dark' ? 'dark-content' : 'light-content'}
+              backgroundColor={themes.colors.primaryBackground}
+            />
+            <RootNavigator />
+          </GestureHandlerRootView>
         </NavigationContainer>
       </SafeAreaProvider>
     </Provider>
