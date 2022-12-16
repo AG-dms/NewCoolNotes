@@ -92,10 +92,10 @@ const TextInput: React.FC<TextInputProps> = ({
         </View>
       ) : null}
       <NativeTextInput
-        numberOfLines={1 /** https://github.com/facebook/react-native/issues/30437 */}
+        numberOfLines={1}
         multiline={false}
         placeholder={showPlaceholder ? titleText : ''}
-        // textAlignVertical={textAlignVertical}
+        placeholderTextColor={themes.colors.placeholder}
         style={[styles.textInput]}
         {...props}
       />

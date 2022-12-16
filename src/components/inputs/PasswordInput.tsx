@@ -11,16 +11,12 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import React, { useState } from 'react';
 import { TapGestureHandler } from 'react-native-gesture-handler';
-import { themes } from '@themes/Themes';
+import { themes } from '@themes/themes';
 
 export interface TextInputProps extends NativeTextInputProps {
   hasError?: boolean;
   title?: string;
   errorText?: string;
-  placeholderText?: string;
-  titleStyle?: StyleProp<TextStyle>;
-  errorTextStyle?: StyleProp<TextStyle>;
-  titleWrapperStyle?: StyleProp<TextStyle>;
   showPlaceholder?: boolean;
   type?: string;
 }
@@ -36,13 +32,10 @@ const PasswordInput: React.FC<TextInputProps> = ({
   errorText,
   style,
   title,
-  titleStyle,
-  titleWrapperStyle,
   placeholder,
   showPlaceholder,
   type,
   placeholderTextColor,
-  errorTextStyle,
   ...props
 }) => {
   const styles = StyleSheet.create({
@@ -103,8 +96,8 @@ const PasswordInput: React.FC<TextInputProps> = ({
   return (
     <View style={styles.wrapper}>
       {showTitle ? (
-        <View style={[styles.titleWrapper, titleWrapperStyle]}>
-          <Text style={[styles.title, titleStyle]} numberOfLines={1} ellipsizeMode="tail">
+        <View style={[styles.titleWrapper]}>
+          <Text style={[styles.title]} numberOfLines={1} ellipsizeMode="tail">
             {titleText}
           </Text>
         </View>
@@ -112,13 +105,10 @@ const PasswordInput: React.FC<TextInputProps> = ({
       <NativeTextInput
         secureTextEntry={passwordShow}
         value={value}
-        numberOfLines={1 /** https://github.com/facebook/react-native/issues/30437 */}
+        numberOfLines={1}
         multiline={false}
-        placeholder={showPlaceholder ? placeholderText : ''}
-        placeholderTextColor={
-          placeholderTextColor ? placeholderTextColor : themes.colors.defaultBorder
-        }
-        // textAlignVertical={textAlignVertical}
+        placeholder={showPlaceholder ? titleText : ''}
+        placeholderTextColor={themes.colors.placeholder}
         style={[styles.textInput, style]}
         {...props}
       />
@@ -132,8 +122,8 @@ const PasswordInput: React.FC<TextInputProps> = ({
         </TapGestureHandler>
       </Pressable>
       {errorText && hasError ? (
-        <View style={[styles.errorWrapper, titleWrapperStyle]}>
-          <Text style={[styles.title, titleStyle]} numberOfLines={1} ellipsizeMode="tail">
+        <View style={[styles.errorWrapper]}>
+          <Text style={[styles.title]} numberOfLines={1} ellipsizeMode="tail">
             {errorText}
           </Text>
         </View>

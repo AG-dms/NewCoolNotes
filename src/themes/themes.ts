@@ -8,6 +8,7 @@ export const themes = {
   colors: {
     primaryText: '#c1c1c1',
     secondaryText: '#767676',
+    placeholder: '#767676',
     errorBorder: '#F92749',
     defaultBorder: '#949599',
     primaryBackground: '#1F4037',
