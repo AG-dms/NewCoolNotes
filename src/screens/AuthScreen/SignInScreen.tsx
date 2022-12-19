@@ -13,6 +13,11 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { SignUpScreenName } from './SignUpScreen';
 import auth from '@react-native-firebase/auth';
 import { useTranslation } from 'react-i18next';
+import jwt_decode from 'jwt-decode';
+import { useAppDispatch } from '@hooks/storeHook';
+import { actionSetUser } from '@store/slices/authSlice/authSlice';
+import { User } from '@store/slices/authSlice/types';
+
 export const SignInScreenName = 'SignInScreen' as const;
 
 type SignInScreenProps = NativeStackScreenProps<AuthNavigatorParamList, 'SignInScreen'>;
@@ -24,6 +29,8 @@ export interface FormState {
 
 export const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
   const validationSchema = yup
     .object({
       login: yup.string().required(t<string>('forms:auth.validation.required')),
@@ -42,7 +49,17 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
     resolver: yupResolver(validationSchema),
   });
   const onSubmit = (data: FormState) => {
-    auth().signInWithEmailAndPassword(data.login, data.password);
+    auth()
+      .signInWithEmailAndPassword(data.login, data.password)
+      .then(response => {
+        const user: User = {
+          email: response.user.email,
+          id: response.user.uid,
+          name: response.user.displayName,
+          is_email_verified: response.user.emailVerified,
+        };
+        dispatch(actionSetUser(user));
+      });
   };
 
   return (
