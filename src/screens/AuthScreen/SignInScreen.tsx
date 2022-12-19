@@ -11,7 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import PasswordInput from '@components/inputs/PasswordInput';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SignUpScreenName } from './SignUpScreen';
-
+import auth from '@react-native-firebase/auth';
 export const SignInScreenName = 'SignInScreen' as const;
 
 type SignInScreenProps = NativeStackScreenProps<AuthNavigatorParamList, 'SignInScreen'>;
@@ -38,7 +38,7 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
     resolver: yupResolver(validationSchema),
   });
   const onSubmit = (data: FormState) => {
-    console.log(data);
+    auth().signInWithEmailAndPassword(data.login, data.password);
   };
 
   return (

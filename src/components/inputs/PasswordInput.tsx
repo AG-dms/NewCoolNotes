@@ -27,15 +27,11 @@ const TITLE_SIZE = 12;
 export type PasswordInput = NativeTextInput;
 
 const PasswordInput: React.FC<TextInputProps> = ({
-  value,
   hasError = false,
   errorText,
   style,
   title,
-  placeholder,
   showPlaceholder,
-  type,
-  placeholderTextColor,
   ...props
 }) => {
   const styles = StyleSheet.create({
@@ -87,9 +83,8 @@ const PasswordInput: React.FC<TextInputProps> = ({
     },
   });
 
-  const placeholderText = !placeholder && title && !value ? title : placeholder;
-  const titleText = title ? title : placeholder;
-  const showTitle = Boolean(title || (placeholder && value));
+  const titleText = title ? title : props.placeholder;
+  const showTitle = props.value;
 
   const [passwordShow, setPasswordShow] = useState<boolean>(true);
 
@@ -104,7 +99,6 @@ const PasswordInput: React.FC<TextInputProps> = ({
       ) : null}
       <NativeTextInput
         secureTextEntry={passwordShow}
-        value={value}
         numberOfLines={1}
         multiline={false}
         placeholder={showPlaceholder ? titleText : ''}
