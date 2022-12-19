@@ -12,6 +12,7 @@ import PasswordInput from '@components/inputs/PasswordInput';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SignInScreenName } from './SignInScreen';
 import auth from '@react-native-firebase/auth';
+import { useTranslation } from 'react-i18next';
 export const SignUpScreenName = 'SignUpScreen' as const;
 
 type SignUpScreenProps = NativeStackScreenProps<AuthNavigatorParamList, typeof SignUpScreenName>;
@@ -22,18 +23,22 @@ export interface FormState {
   repeatPassword: string;
 }
 
-const validationSchema = yup
-  .object({
-    login: yup.string().required('Обязательное поле'),
-    password: yup.string().required('Обязательное поле').min(6, 'Минимум 6 символов'),
-    repeatPassword: yup
-      .string()
-      .required('Обязательное поле')
-      .oneOf([yup.ref('password'), null], 'Пароли не совпадают'),
-  })
-  .required();
-
 export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
+  const { t } = useTranslation();
+  const validationSchema = yup
+    .object({
+      login: yup.string().required(t<string>('forms:auth.validation.required')),
+      password: yup
+        .string()
+        .required(t<string>('forms:auth.validation.required'))
+        .min(6, t<string>('forms:auth.validation.minLengthPassword')),
+      repeatPassword: yup
+        .string()
+        .required(t<string>('forms:auth.validation.required'))
+        .oneOf([yup.ref('password'), null], t<string>('forms:auth.validation.passwordMismatch')),
+    })
+    .required();
+
   const { control, handleSubmit } = useForm<FormState>({
     defaultValues: {
       login: '',

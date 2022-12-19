@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "titles": {
+      "login": "Email",
+      "password": "Пароль",
+      "repeatPassword": "Повторите пароль"
+    },
+    "validation": {
+      "required": "*Обязательное поле",
+      "notEmail": "*Введите почту",
+      "minLengthPassword": "*Минимум 6 символов",
+      "passwordMismatch": "*Пароли не совпадают"
+    }
+  }
+}

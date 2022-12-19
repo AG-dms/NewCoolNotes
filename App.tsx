@@ -8,6 +8,8 @@ import RNBootSplash from 'react-native-bootsplash';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
+import './src/i18n/i18n';
+
 const App = () => {
   const colorScheme = Appearance.getColorScheme();
   return (

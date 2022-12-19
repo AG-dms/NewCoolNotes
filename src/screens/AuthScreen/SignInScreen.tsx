@@ -12,6 +12,7 @@ import PasswordInput from '@components/inputs/PasswordInput';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SignUpScreenName } from './SignUpScreen';
 import auth from '@react-native-firebase/auth';
+import { useTranslation } from 'react-i18next';
 export const SignInScreenName = 'SignInScreen' as const;
 
 type SignInScreenProps = NativeStackScreenProps<AuthNavigatorParamList, 'SignInScreen'>;
@@ -21,14 +22,17 @@ export interface FormState {
   password: string;
 }
 
-const validationSchema = yup
-  .object({
-    login: yup.string().required('Обязательное поле'),
-    password: yup.string().required('Обязательное поле').min(6, 'Минимум 6 символов'),
-  })
-  .required();
-
 export const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
+  const { t } = useTranslation();
+  const validationSchema = yup
+    .object({
+      login: yup.string().required(t<string>('forms:auth.validation.required')),
+      password: yup
+        .string()
+        .required(t<string>('forms:auth.validation.required'))
+        .min(6, t<string>('forms:auth.validation.minLengthPassword')),
+    })
+    .required();
   const { control, handleSubmit } = useForm<FormState>({
     defaultValues: {
       login: '',
@@ -60,7 +64,7 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value }, fieldState }) => (
             <TextInput
-              title="Login"
+              title={t('forms:auth.titles.login')}
               hasError={!!fieldState.error?.message}
               errorText={fieldState.error?.message}
               onBlur={onBlur}
@@ -75,7 +79,7 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value }, fieldState }) => (
             <PasswordInput
-              title="Password"
+              title={t('forms:auth.titles.password')}
               hasError={!!fieldState.error?.message}
               errorText={fieldState.error?.message}
               onBlur={onBlur}
@@ -86,9 +90,9 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
           )}
         />
 
-        <CustomPressable onPress={handleSubmit(onSubmit)} text="Войти" />
+        <CustomPressable onPress={handleSubmit(onSubmit)} text={t('action:signIn')} />
         <Pressable onPress={() => navigation.replace(SignUpScreenName)}>
-          <Text style={styles.link}>Нет аккаунта? Регистрация</Text>
+          <Text style={styles.link}>{t('action:linkToSignUp')}</Text>
         </Pressable>
       </KeyboardAwareScrollView>
     </SafeAreaView>
