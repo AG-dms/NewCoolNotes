@@ -15,7 +15,7 @@ import { themes } from '@themes/themes';
 
 export interface TextInputProps extends NativeTextInputProps {
   hasError?: boolean;
-  title?: string;
+  title?: string | null;
   errorText?: string;
   showPlaceholder?: boolean;
   type?: string;

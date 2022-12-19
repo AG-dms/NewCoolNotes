@@ -4,7 +4,7 @@ import { themes } from '@themes/themes';
 
 interface ButtonProps extends PressableProps {
   disabled?: boolean;
-  text?: string;
+  text: string;
   onPress?: () => void;
   loading?: boolean;
   color?: string;

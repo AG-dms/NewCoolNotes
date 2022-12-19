@@ -11,7 +11,7 @@ import React from 'react';
 
 export interface TextInputProps extends NativeTextInputProps {
   hasError?: boolean;
-  title?: string;
+  title?: string | null;
   errorText?: string;
   type?: string;
   showPlaceholder?: boolean;
