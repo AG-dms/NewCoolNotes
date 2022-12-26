@@ -15,7 +15,11 @@ const Stack = createStackNavigator<MainNavigatorParamList>();
 
 export const MainNavigator: React.FC = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+      })}
+    >
       <Stack.Screen name={HomeNavigatorName} component={HomeNavigator} />
     </Stack.Navigator>
   );

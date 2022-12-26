@@ -13,7 +13,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { SignInScreenName } from './SignInScreen';
 import auth from '@react-native-firebase/auth';
 import { useTranslation } from 'react-i18next';
-
+import firestore from '@react-native-firebase/firestore';
 import { User } from '@store/slices/authSlice/types';
 import { useAppDispatch } from '@hooks/storeHook';
 import { actionSetUser } from '@store/slices/authSlice/authSlice';
@@ -51,7 +51,6 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
       password: '',
       repeatPassword: '',
     },
-    // TODO add validation schema
     resolver: yupResolver(validationSchema),
   });
   const onSubmit = (data: FormState) => {
@@ -65,6 +64,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
           is_email_verified: response.user.emailVerified,
         };
         dispatch(actionSetUser(user));
+        firestore().collection('Users').doc(`${user.id}`).set(user);
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
