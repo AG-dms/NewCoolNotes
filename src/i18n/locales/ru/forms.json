@@ -11,5 +11,9 @@
       "minLengthPassword": "*Минимум 6 символов",
       "passwordMismatch": "*Пароли не совпадают"
     }
+  },
+  "note": {
+    "title": "Заголовок",
+    "placeholder": "Начните писать здесь..."
   }
 }

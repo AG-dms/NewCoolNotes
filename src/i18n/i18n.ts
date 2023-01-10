@@ -6,6 +6,7 @@ import formsRu from './locales/ru/forms.json';
 
 i18n.use(initReactI18next).init({
   compatibilityJSON: 'v3',
+  returnNull: false,
   lng: Language.RU,
   react: {
     useSuspense: false,
