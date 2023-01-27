@@ -14,6 +14,7 @@ export const themes = {
     primaryBackground: '#1F4037',
     secondBackground: '#023320',
     buttonPrimary: '#00A86C',
+    indicator: '#00A86C',
     linkTextColor: '#51B5D4',
     rippleColor: 'rgba(46, 211, 152, 0.8)',
   },

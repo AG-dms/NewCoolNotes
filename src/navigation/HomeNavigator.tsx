@@ -11,11 +11,15 @@ import { Keyboard, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MainNavigatorParamList } from './MainNavigator';
 import SearchIcon from 'react-native-vector-icons/Ionicons';
+import { IconButton } from 'react-native-paper';
 
 export type HomeNavigatorParamList = {
   [HomeScreenName]: undefined;
   [FoldersScreenName]: undefined;
-  [NewNoteScreenName]: undefined;
+  [NewNoteScreenName]: {
+    noteId?: string | null;
+    folderName?: string | null;
+  };
   [SettingsScreenName]: undefined;
   [SearchScreenName]: undefined;
 };
@@ -49,6 +53,8 @@ export const HomeNavigator: React.FC = () => {
 
   return (
     <Tab.Navigator
+      backBehavior="history"
+      initialRouteName={HomeScreenName}
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {
@@ -81,10 +87,7 @@ export const HomeNavigator: React.FC = () => {
             return (
               <View
                 style={{
-                  position: 'absolute',
-                  top: -25,
-                  display: keyboardStatus ? 'none' : 'flex',
-                  width: 50,
+                  width: 35,
                   aspectRatio: 1,
                   marginBottom: 0,
                   backgroundColor: themes.colors.buttonPrimary,
@@ -96,7 +99,7 @@ export const HomeNavigator: React.FC = () => {
                   justifyContent: 'center',
                 }}
               >
-                <Icon name="plus" color={themes.colors.primaryBackground} size={35} />
+                <Icon name="plus" color={themes.colors.primaryBackground} size={25} />
               </View>
             );
           }

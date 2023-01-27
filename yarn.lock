@@ -8369,6 +8369,7 @@ __metadata:
     react-hook-form: ^7.41.0
     react-i18next: ^12.1.1
     react-native: 0.70.6
+    react-native-animated-header: ^1.0.7
     react-native-asset: ^2.0.1
     react-native-bootsplash: ^4.4.0
     react-native-gesture-handler: ^2.8.0
@@ -8378,6 +8379,7 @@ __metadata:
     react-native-reanimated: ^2.13.0
     react-native-safe-area-context: ^4.4.1
     react-native-screens: ^3.18.2
+    react-native-uuid: ^2.0.1
     react-native-vector-icons: ^9.2.0
     react-native-webview: ^11.26.0
     react-redux: ^8.0.5
@@ -9303,6 +9305,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-animated-header@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "react-native-animated-header@npm:1.0.7"
+  checksum: e0058758133eba3889ca6817bb933a175dd14b32b9dceb5c2df10ff7eaadbfdf464005446a2554ca26c1a9678046cc06a27f743aa930df70cb6e11628dbf7ff1
+  languageName: node
+  linkType: hard
+
 "react-native-asset@npm:^2.0.1":
   version: 2.0.1
   resolution: "react-native-asset@npm:2.0.1"
@@ -9466,6 +9475,13 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 8f7202baced736220710138469aea2c7b543662d820eb47170bfc98a0503f8c764d7509596ccbcc76cac6158e47a2c029444d6e1f78c20e98bcafeda15027ac1
+  languageName: node
+  linkType: hard
+
+"react-native-uuid@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "react-native-uuid@npm:2.0.1"
+  checksum: 2fae6e2ee6cef108a31ae9d5be661a1947a86f4c6a812c7386b57d970861b364dc887bc4fe3225227aeea7925ccdc24d4478ff30193305abc283eb4a30ee2138
   languageName: node
   linkType: hard
 

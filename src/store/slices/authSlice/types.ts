@@ -1,5 +1,5 @@
 export interface AuthInitialState {
-  user: User | null;
+  user: User;
 }
 
 export interface User {

@@ -12,7 +12,6 @@ type HomeScreenProps = BottomTabScreenProps<HomeNavigatorParamList, typeof HomeS
 const HomeScreen: React.FC<HomeScreenProps> = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(state => state.auth.user);
-  console.log('user', user);
 
   const handleLogout = () => {
     auth()

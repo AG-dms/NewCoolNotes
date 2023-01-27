@@ -98,7 +98,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value }, fieldState }) => (
             <TextInput
-              title="Login"
+              title={t('forms:auth.titles.login')}
               hasError={!!fieldState.error?.message}
               errorText={fieldState.error?.message}
               onBlur={onBlur}
@@ -113,7 +113,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value }, fieldState }) => (
             <PasswordInput
-              title="Password"
+              title={t('forms:auth.titles.password')}
               hasError={!!fieldState.error?.message}
               errorText={fieldState.error?.message}
               onBlur={onBlur}
@@ -128,7 +128,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value }, fieldState }) => (
             <PasswordInput
-              title="Repeat password"
+              title={t('forms:auth.titles.repeatPassword')}
               hasError={!!fieldState.error?.message}
               errorText={fieldState.error?.message}
               onBlur={onBlur}
